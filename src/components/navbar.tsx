@@ -9,11 +9,15 @@ export const Navbar = () => {
   const signUserOut = async () => {
     await signOut(auth);
   };
+  
   return (
     <div className="navbar">
       <div className="links">
         <Link to="/"> Home </Link>
-        <Link to="/login"> Login </Link>
+        {!user ? 
+        (<Link to="/login"> Login </Link>) : 
+        (<Link to="/createpost"> Create Post </Link>)
+        }
       </div>
       <div className="user">
         {user && (
