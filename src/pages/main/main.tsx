@@ -28,9 +28,17 @@ export const Main = () => {
         getPosts();
     }, []);
 
-    return <div>
-        {postsList?.map((post) => 
-            <Post post={post}/>
-        )}
-    </div>
+    return (
+        
+        <div>
+            <h1>
+                Welcome to postIt! Log in or create your account to continue. 
+            </h1>
+
+            {postsList?.map((post) => 
+                <Post post={post}/>
+            )}
+
+        </div>
+    )
 }
