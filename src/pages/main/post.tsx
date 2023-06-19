@@ -46,6 +46,7 @@ export const Post = (props: Props) => {
 
     // getting the number of likes for each post 
     const likesDoc = query(likesRef, where("postId",  "==", post.id));
+    
     const getLikes = async () => {
         const data = await getDocs(likesDoc);
         setLikes(
@@ -84,21 +85,23 @@ export const Post = (props: Props) => {
     }, [])
 
     return (
-        <div>
-      <div className="title">
-        <h1> {post.title}</h1>
-      </div>
-      <div className="body">
-        <p> {post.description} </p>
-      </div>
+      <div style={{display:"flex", justifyContent:"center", paddingTop:"10px", paddingBottom:"10px"}}>
+        <div className="glass-effect">
+          <div className="title">
+            <h1> {post.title}</h1>
+          </div>
+          <div className="body">
+            <p> {post.description} </p>
+          </div>
 
-      <div className="footer">
-        <p> @{post.username} </p>
-        <button onClick={hasUserLiked ? removeLike : addLike}>
-          {hasUserLiked ? <>&#128078;</> : <>&#128077;</>}{" "}
-        </button>
-        {likes && <p> Likes: {likes?.length} </p>}
-      </div>
+          <div className="footer">
+            <p> @{post.username} </p>
+            <button onClick={hasUserLiked ? removeLike : addLike}>
+              {hasUserLiked ? <>&#128078;</> : <>&#128077;</>}{" "}
+            </button>
+            {likes && <p> Likes: {likes?.length} </p>}
+          </div>
+        </div>
     </div>
     )
 }

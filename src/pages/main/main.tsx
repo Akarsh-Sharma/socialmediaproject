@@ -1,7 +1,8 @@
 import { getDocs, collection } from "firebase/firestore";
-import { db } from "../../config/firebase";
 import { useEffect, useState } from "react";
 import { Post } from "./post";
+import { auth, db } from "../../config/firebase";
+import { useAuthState } from 'react-firebase-hooks/auth';
 
 export interface Post { // we made an interface for our Post object 
     id: string;
@@ -17,6 +18,8 @@ export const Main = () => {
     // reference to our posts db collection 
     const postRef = collection(db, "posts");
 
+    const [user] = useAuthState(auth);
+
     const getPosts = async () => {
         const data = await getDocs(postRef); 
         setPostsList(
@@ -31,9 +34,12 @@ export const Main = () => {
     return (
         
         <div>
-            <h1>
-                Welcome to postIt! Log in or create your account to continue. 
+            <h1 style={{fontFamily:"Roboto", color:"white"}}>
+                Welcome to postIt! 
             </h1>
+            
+            {!user && <p style={{color:"white"}}> Log in or Sign in to continue!</p>}
+            
 
             {postsList?.map((post) => 
                 <Post post={post}/>

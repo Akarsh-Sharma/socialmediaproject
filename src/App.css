@@ -1,5 +1,9 @@
 .App {
   text-align: center;
+  background-image: url(./backgroundImage.png);
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
 }
 
 body {
@@ -82,4 +86,60 @@ textarea {
 
 .submitForm:hover {
   cursor: pointer;
+}
+
+.glass-effect {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgb(255, 255, 255, 0));
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 8px 32px 0 rgba(0,0,0,0.37);
+  border: 1 px solid rgba(255,255,255,0.18);
+  border-radius: 32px;
+  max-width: 50%;
+  flex: auto;
+}
+
+/* Media query for screens smaller than 600px */
+@media (max-width: 600px) {
+  .navbar .links {
+    margin-right: 20px;
+  }
+
+  .navbar .user {
+    margin-right: 20px;
+  }
+
+  form {
+    width: 280px;
+  }
+}
+
+/* Media query for screens larger than 1200px */
+@media (min-width: 1200px) {
+  .navbar .links {
+    margin-right: 70px;
+  }
+
+  .navbar .user {
+    margin-right: 70px;
+  }
+
+  form {
+    width: 400px;
+  }
+}
+
+/* Media query for screens between 600px and 1200px */
+@media (min-width: 600px) and (max-width: 1200px) {
+  .navbar .links {
+    margin-right: 40px;
+  }
+
+  .navbar .user {
+    margin-right: 40px;
+  }
+
+  form {
+    width: 320px;
+  }
 }
